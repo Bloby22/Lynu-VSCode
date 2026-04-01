@@ -24,40 +24,6 @@ Majest splits the world into two rings:
 
 ---
 
-## 📦 Project Structure
-
-```text
-.
-├── core/                // Go "Kernel" logic (Server, Bridge, Security)
-├── internal/            // Internal Lua-to-Go APIs
-├── app/                 // User Application Space
-│   ├── controllers/     // Logic written in Lua
-│   ├── views/           // .gxd templates (HTML + Lua)
-│   └── static/          // Minified assets (HTMX, CSS)
-├── majest.json          // Framework configuration
-└── main.go              // The Entry Point
-```
-
----
-
-## 🏗 Installation (Coming Soon)
-
-Once the first stable build is released on `gxd.bloby.eu`, you will be able to install Majest as a single static binary:
-
----
-
-## 🎯 Roadmap
-
-- [ ] **Alpha 0.1:** Core Go-Lua bridge with `sync.Pool` implementation.
-- [ ] **Security:** Context-aware auto-escaping for all `.gxd` templates.
-- [ ] **Deployment:** Official Pterodactyl Egg for one-click hosting.
-- [ ] **Edge:** Vercel Runtime integration for Go-based Serverless functions.
-
----
-
 ## 🛡 License
 
 Majest is released under the **MIT License**. Keep it open, keep it fast.
-```
-
-Tento formát zajistí, že na GitHubu nebo tvém webu uvidíš krásné nadpisy, tučný text a přehledné bloky kódu. Chceš tam ještě doplnit nějaké specifické **TODO** úkoly, které máš v hlavě?
