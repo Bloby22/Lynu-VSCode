@@ -1,0 +1,60 @@
+{
+  "name": "lynu-language",
+  "displayName": "Lynu Language",
+  "description": "Full syntax highlighting, snippets, and theme support for the Lynu scripting language (.lyn files)",
+  "version": "1.0.0",
+  "publisher": "BlobyCZ",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Themes"
+  ],
+  "keywords": ["lynu", "lyn", "scripting", "language"],
+  "icon": "favicon.ico",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bloby22/lynu-vscode"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "lynu",
+        "aliases": ["Lynu", "lynu"],
+        "extensions": [".lyn"],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/lyn-light.svg",
+          "dark": "./icons/lyn-dark.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "lynu",
+        "scopeName": "source.lynu",
+        "path": "./syntaxes/lynu.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "lynu",
+        "path": "./snippets/lynu.json"
+      }
+    ],
+    "themes": [
+      {
+        "label": "Lynu Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/lynu-dark-color-theme.json"
+      },
+      {
+        "label": "Lynu Light",
+        "uiTheme": "vs",
+        "path": "./themes/lynu-light-color-theme.json"
+      }
+    ]
+  }
+}
