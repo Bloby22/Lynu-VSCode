@@ -1,0 +1,198 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Lynu",
+  "scopeName": "source.lynu",
+  "fileTypes": [".lyn"],
+  "patterns": [
+    { "include": "#block-comment" },
+    { "include": "#line-comment" },
+    { "include": "#string" },
+    { "include": "#number" },
+    { "include": "#keyword-control" },
+    { "include": "#keyword-declaration" },
+    { "include": "#keyword-operator-word" },
+    { "include": "#keyword-type" },
+    { "include": "#keyword-io" },
+    { "include": "#keyword-module" },
+    { "include": "#constant-boolean" },
+    { "include": "#function-definition" },
+    { "include": "#function-call" },
+    { "include": "#method-call" },
+    { "include": "#builtin-function" },
+    { "include": "#member-access" },
+    { "include": "#operator-symbol" },
+    { "include": "#punctuation" },
+    { "include": "#identifier" }
+  ],
+  "repository": {
+
+    "block-comment": {
+      "name": "comment.block.lynu",
+      "begin": "---",
+      "end": "---",
+      "patterns": [
+        {
+          "name": "comment.block.lynu",
+          "match": "."
+        }
+      ]
+    },
+
+    "line-comment": {
+      "name": "comment.line.double-dash.lynu",
+      "match": "--.*$"
+    },
+
+    "string": {
+      "name": "string.quoted.double.lynu",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.lynu",
+          "match": "\\\\[ntr\"\\\\]"
+        },
+        {
+          "name": "invalid.illegal.escape.lynu",
+          "match": "\\\\."
+        }
+      ]
+    },
+
+    "number": {
+      "name": "constant.numeric.lynu",
+      "match": "\\b[0-9]+(?:\\.[0-9]+)?\\b"
+    },
+
+    "constant-boolean": {
+      "name": "constant.language.boolean.lynu",
+      "match": "\\b(true|false)\\b"
+    },
+
+    "keyword-declaration": {
+      "name": "storage.type.lynu",
+      "match": "\\b(set|let|fn)\\b"
+    },
+
+    "keyword-control": {
+      "name": "keyword.control.lynu",
+      "match": "\\b(if|then|else|end|loop|repeat|times|do|break|skip|give)\\b"
+    },
+
+    "keyword-io": {
+      "name": "keyword.other.io.lynu",
+      "match": "\\b(say|print)\\b"
+    },
+
+    "keyword-module": {
+      "name": "keyword.control.import.lynu",
+      "match": "\\buse\\b"
+    },
+
+    "keyword-operator-word": {
+      "name": "keyword.operator.word.lynu",
+      "match": "\\b(is|isnt|above|below|atleast|atmost|also|and|or|not)\\b"
+    },
+
+    "keyword-type": {
+      "name": "support.type.lynu",
+      "match": "\\b(num|text|bool|void)\\b"
+    },
+
+    "function-definition": {
+      "patterns": [
+        {
+          "comment": "fn name(...)",
+          "match": "\\b(fn)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()",
+          "captures": {
+            "1": { "name": "storage.type.function.lynu" },
+            "2": { "name": "entity.name.function.lynu" }
+          }
+        }
+      ]
+    },
+
+    "builtin-function": {
+      "name": "support.function.builtin.lynu",
+      "match": "\\b(textof|numof|size|push|pop|input|type)\\b(?=\\s*\\()"
+    },
+
+    "function-call": {
+      "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()",
+      "captures": {
+        "1": { "name": "entity.name.function.call.lynu" }
+      }
+    },
+
+    "method-call": {
+      "comment": "obj.method(...) — highlights the method name",
+      "match": "\\.([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()",
+      "captures": {
+        "1": { "name": "entity.name.function.member.lynu" }
+      }
+    },
+
+    "member-access": {
+      "comment": "obj.field — highlights the field name (no parens following)",
+      "match": "\\.([a-zA-Z_][a-zA-Z0-9_]*)\\b(?!\\s*\\()",
+      "captures": {
+        "1": { "name": "variable.other.member.lynu" }
+      }
+    },
+
+    "operator-symbol": {
+      "patterns": [
+        {
+          "name": "keyword.operator.arithmetic.lynu",
+          "match": "[+\\-*/%]"
+        },
+        {
+          "name": "keyword.operator.comparison.lynu",
+          "match": "(==|!=|>=|<=|>|<)"
+        },
+        {
+          "name": "keyword.operator.assignment.lynu",
+          "match": "(?<![=!<>])=(?!=)"
+        },
+        {
+          "name": "keyword.operator.arrow.lynu",
+          "match": "->"
+        }
+      ]
+    },
+
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.definition.parameters.lynu",
+          "match": "[()]"
+        },
+        {
+          "name": "punctuation.definition.array.lynu",
+          "match": "[\\[\\]]"
+        },
+        {
+          "name": "punctuation.definition.object.lynu",
+          "match": "[{}]"
+        },
+        {
+          "name": "punctuation.separator.comma.lynu",
+          "match": ","
+        },
+        {
+          "name": "punctuation.separator.colon.lynu",
+          "match": ":"
+        },
+        {
+          "name": "punctuation.accessor.dot.lynu",
+          "match": "\\."
+        }
+      ]
+    },
+
+    "identifier": {
+      "name": "variable.other.lynu",
+      "match": "[a-zA-Z_][a-zA-Z0-9_]*"
+    }
+  }
+}
