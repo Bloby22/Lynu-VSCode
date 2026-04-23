@@ -1,29 +1,75 @@
-# 🏰 Majest Framework
-> **The Kernel 0 Web Engine.** Built for speed, locked for security, powered by Go & Lua.
+# Lynu Language — VSCode Extension
 
-Majest is a high-performance web framework designed to end "JavaScript fatigue." By treating **Go as the Hardware (Kernel 0)** and **Lua as the Scripting Layer**, Majest delivers sub-millisecond rendering with a zero-JS footprint.
+Full language support for **Lynu** (`.lyn` files) in Visual Studio Code.
 
----
+## Features
 
-## 🚀 Why Majest?
+### Syntax Highlighting
+Every token of the Lynu language is highlighted:
 
-* **Kernel 0 Security:** Built-in auto-escaping in the Go core. XSS attacks like `alert('hacked')` are physically impossible by design.
-* **Raw Performance:** Compiled Go binary execution. No V8 engine overhead, no Python interpreter lag.
-* **Zero JS Runtime:** Leverages **HTMX** for reactivity. You get the feel of a Single Page App (SPA) with the simplicity of Multi-Page Architecture (MPA).
-* **Resource Efficiency:** Runs on **15-20MB of RAM**. Perfect for low-cost VPS, Raspberry Pi, or edge computing.
-* **Pterodactyl Ready:** Deploy instantly using the official Majest Egg.
+| Category | Tokens |
+|---|---|
+| **Declarations** | `set`, `let`, `fn` |
+| **Control flow** | `if`, `then`, `else`, `end`, `loop`, `repeat`, `times`, `do`, `break`, `skip`, `give` |
+| **I/O** | `say`, `print` |
+| **Modules** | `use` |
+| **Word operators** | `is`, `isnt`, `above`, `below`, `atleast`, `atmost`, `also`, `and`, `or`, `not` |
+| **Types** | `num`, `text`, `bool`, `void` |
+| **Built-ins** | `textof`, `numof`, `size`, `push`, `pop`, `input`, `type` |
+| **Literals** | strings, numbers, `true`/`false` |
+| **Operators** | `+`, `-`, `*`, `/`, `%`, `=`, `->`, `==`, `!=`, `>=`, `<=`, `>`, `<` |
+| **Comments** | `-- line comment`, `--- block comment ---` |
 
----
+### Snippets
+| Prefix | Inserts |
+|---|---|
+| `set` | Immutable variable |
+| `let` | Mutable variable |
+| `fn` | Function with return type |
+| `fnvoid` | Void function |
+| `if` | If statement |
+| `ifelse` | If/Else |
+| `ifelseif` | If/Else if/Else chain |
+| `loop` | Infinite loop with break |
+| `repeat` | Repeat N times |
+| `repeatas` | Repeat N times with index |
+| `say` | Print statement |
+| `use` | Use module |
+| `arr` | Array literal |
+| `obj` | Object literal |
+| `textof` | Convert to text |
+| `numof` | Convert to num |
+| `input` | Read user input |
+| `factorial` | Recursive factorial example |
+| `hello` | Hello World |
 
-## 🛠 The Architecture
+### Themes
+- **Lynu Dark** — dark background with purple/blue accent palette
+- **Lynu Light** — light background with One Light-inspired palette
 
-Majest splits the world into two rings:
+### Language Configuration
+- Auto-closing pairs: `()`, `[]`, `{}`, `""`
+- Block comment toggle: `---`
+- Line comment toggle: `--`
+- Auto-indent on `do`, `then`, `else`
+- De-indent on `end`, `else`
+- Code folding on `do`/`end` blocks
 
-1.  **The Ring 0 (Go):** Handles routing, security filtering, database pooling, and template compilation. It acts as the "Hardware" that protects the system.
-2.  **The User Space (Lua):** Your application logic. Fast, lightweight, and isolated. No more `node_modules` dependency hell.
+## Usage
 
----
+Files ending in `.lyn` are automatically detected as Lynu. To manually set the language, use the language picker in the bottom-right of VSCode and select **Lynu**.
 
-## 🛡 License
+## Example
 
-Majest is released under the **MIT License**. Keep it open, keep it fast.
+```lynu
+-- Factorial example
+fn faktorial(n: num) -> num do
+    if n below 2 then
+        give 1
+    end
+    give n * faktorial(n - 1)
+end
+
+set vysledek = faktorial(10)
+say "10! = " + textof(vysledek)
+```
